@@ -14,7 +14,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
    @IBOutlet weak var mapView: MKMapView!
    
-   var annotations = TestData.annotations
+   var annotations: [MKPointAnnotation] = TestData.annotations
    
    override func viewDidLoad() {
       super.viewDidLoad()
