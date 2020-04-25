@@ -14,14 +14,23 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
    @IBOutlet weak var mapView: MKMapView!
    
+   var annotations: [MKPointAnnotation] {
+      let firstPoint = MKPointAnnotation()
+      firstPoint.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: 50.44)!, longitude: CLLocationDegrees(exactly: -89.25)!)
+      firstPoint.title = "Some point"
+      firstPoint.subtitle = "http://google.com"
+      let secondPoint = MKPointAnnotation()
+      secondPoint.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: 40.44)!, longitude: CLLocationDegrees(exactly: -99.25)!)
+      secondPoint.title = "Some other point"
+      secondPoint.subtitle = "http://udacity.com"
+      return [firstPoint, secondPoint]
+   }
+   
    override func viewDidLoad() {
       super.viewDidLoad()
       // Do any additional setup after loading the view.
-      let point = MKPointAnnotation()
-      point.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: 40.44)!, longitude: CLLocationDegrees(exactly: -99.25)!)
-      point.title = "Some Point"
-      point.subtitle = "http://google.com"
-      mapView.addAnnotation(point)
+      
+      mapView.addAnnotations(annotations)
       mapView.delegate = self
    }
 
