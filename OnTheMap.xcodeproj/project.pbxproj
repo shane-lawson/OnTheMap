@@ -66,20 +66,44 @@
 		343BF9742453698300412DFB /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
-				343BF9752453698300412DFB /* AppDelegate.swift */,
-				343BF9772453698300412DFB /* SceneDelegate.swift */,
-				343BF99124555C6A00412DFB /* LoginViewController.swift */,
-				343BF9792453698300412DFB /* MapViewController.swift */,
-				343BF97B2453698300412DFB /* Main.storyboard */,
-				343BF98D245547DA00412DFB /* AddLocationViewController.swift */,
-				343BF98F245547EC00412DFB /* AddLocationMapViewController.swift */,
-				343BF98B2454E8DD00412DFB /* PinTableViewController.swift */,
+				343BF9952455613600412DFB /* Controller */,
+				343BF9932455610800412DFB /* View */,
 				343BF97E2453698500412DFB /* Assets.xcassets */,
+				343BF9942455611B00412DFB /* Other */,
 				343BF9892454E68C00412DFB /* TestData.swift */,
-				343BF9802453698500412DFB /* LaunchScreen.storyboard */,
-				343BF9832453698500412DFB /* Info.plist */,
 			);
 			path = OnTheMap;
+			sourceTree = "<group>";
+		};
+		343BF9932455610800412DFB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				343BF97B2453698300412DFB /* Main.storyboard */,
+				343BF9802453698500412DFB /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		343BF9942455611B00412DFB /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				343BF9752453698300412DFB /* AppDelegate.swift */,
+				343BF9772453698300412DFB /* SceneDelegate.swift */,
+				343BF9832453698500412DFB /* Info.plist */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		343BF9952455613600412DFB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				343BF99124555C6A00412DFB /* LoginViewController.swift */,
+				343BF9792453698300412DFB /* MapViewController.swift */,
+				343BF98B2454E8DD00412DFB /* PinTableViewController.swift */,
+				343BF98D245547DA00412DFB /* AddLocationViewController.swift */,
+				343BF98F245547EC00412DFB /* AddLocationMapViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
