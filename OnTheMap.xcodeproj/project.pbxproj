@@ -15,6 +15,8 @@
 		343BF9822453698500412DFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 343BF9802453698500412DFB /* LaunchScreen.storyboard */; };
 		343BF98A2454E68C00412DFB /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343BF9892454E68C00412DFB /* TestData.swift */; };
 		343BF98C2454E8DD00412DFB /* PinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343BF98B2454E8DD00412DFB /* PinTableViewController.swift */; };
+		343BF98E245547DA00412DFB /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343BF98D245547DA00412DFB /* AddLocationViewController.swift */; };
+		343BF990245547EC00412DFB /* AddLocationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343BF98F245547EC00412DFB /* AddLocationMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		343BF9832453698500412DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		343BF9892454E68C00412DFB /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		343BF98B2454E8DD00412DFB /* PinTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinTableViewController.swift; sourceTree = "<group>"; };
+		343BF98D245547DA00412DFB /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
+		343BF98F245547EC00412DFB /* AddLocationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,8 @@
 				343BF9772453698300412DFB /* SceneDelegate.swift */,
 				343BF9792453698300412DFB /* MapViewController.swift */,
 				343BF97B2453698300412DFB /* Main.storyboard */,
+				343BF98D245547DA00412DFB /* AddLocationViewController.swift */,
+				343BF98F245547EC00412DFB /* AddLocationMapViewController.swift */,
 				343BF98B2454E8DD00412DFB /* PinTableViewController.swift */,
 				343BF97E2453698500412DFB /* Assets.xcassets */,
 				343BF9892454E68C00412DFB /* TestData.swift */,
@@ -145,9 +151,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				343BF97A2453698300412DFB /* MapViewController.swift in Sources */,
+				343BF98E245547DA00412DFB /* AddLocationViewController.swift in Sources */,
 				343BF9762453698300412DFB /* AppDelegate.swift in Sources */,
 				343BF9782453698300412DFB /* SceneDelegate.swift in Sources */,
 				343BF98A2454E68C00412DFB /* TestData.swift in Sources */,
+				343BF990245547EC00412DFB /* AddLocationMapViewController.swift in Sources */,
 				343BF98C2454E8DD00412DFB /* PinTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
