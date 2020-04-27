@@ -22,6 +22,11 @@ class AddLocationViewController: UIViewController {
       findLocationButton.layer.cornerRadius = 4.0
     }
     
+   @IBAction func findLocationButton(_ sender: UIButton) {
+      // TODO: Implement find location
+      performSegue(withIdentifier: "showMapLocation", sender: nil)
+   }
+   
    @IBAction func cancelButton(_ sender: UIBarButtonItem) {
       dismiss(animated: true, completion: nil)
    }

@@ -98,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fm6-ID-IHC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3413" y="74"/>
+            <point key="canvasLocation" x="-3316" y="74"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ohp-sj-sP5">
@@ -122,19 +122,14 @@
             <objects>
                 <tabBarController id="yeO-8j-zeS" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="On the Map" id="RvT-GJ-s1t">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="o3C-bb-whJ">
-                            <color key="tintColor" red="0.1648017168" green="0.70309323069999996" blue="0.895126164" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="o3C-bb-whJ"/>
                         <rightBarButtonItems>
                             <barButtonItem image="icon_addpin" id="ucB-br-eGu">
-                                <color key="tintColor" red="0.1648017168" green="0.70309323069999996" blue="0.895126164" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="95C-Mp-WGC" kind="presentation" id="Be6-oJ-Zu6"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="icon_refresh" id="l0f-ZD-Vv1">
-                                <color key="tintColor" red="0.1648017168" green="0.70309323069999996" blue="0.895126164" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </barButtonItem>
+                            <barButtonItem title="Item" image="icon_refresh" id="l0f-ZD-Vv1"/>
                         </rightBarButtonItems>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UVw-mO-61q">
@@ -156,7 +151,7 @@
         <scene sceneID="Ra2-2z-RIU">
             <objects>
                 <navigationController id="95C-Mp-WGC" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorImage="icon_back-arrow" id="F8y-NR-ahc">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="F8y-NR-ahc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -204,6 +199,9 @@
                                         <state key="normal" title="Find Location">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="findLocationButton:" destination="Z3f-Em-WJx" eventType="touchUpInside" id="9aG-eZ-lbw"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -228,8 +226,7 @@
                         <viewLayoutGuide key="safeArea" id="OLh-MT-nRO"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Location" id="aiN-1b-bE9">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="BwW-Dc-FUd">
-                            <color key="tintColor" red="0.1648017168" green="0.70309323069999996" blue="0.895126164" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="BwW-Dc-FUd">
                             <connections>
                                 <action selector="cancelButton:" destination="Z3f-Em-WJx" id="Mr5-wS-B07"/>
                             </connections>
@@ -377,7 +374,6 @@
     <color key="tintColor" red="0.1648017168" green="0.70309323069999996" blue="0.895126164" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="icon_addpin" width="24" height="24"/>
-        <image name="icon_back-arrow" width="24" height="24"/>
         <image name="icon_listview-deselected" width="75" height="50"/>
         <image name="icon_listview-selected" width="75" height="50"/>
         <image name="icon_mapview-deselected" width="75" height="50"/>
