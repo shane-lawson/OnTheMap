@@ -15,15 +15,31 @@ class MapViewController: UIViewController, MKMapViewDelegate {
    @IBOutlet weak var mapView: MKMapView!
    
    var annotations: [MKPointAnnotation] = TestData.annotations
+   var studentLocations = [StudentLocation]()
    
    override func viewDidLoad() {
       super.viewDidLoad()
       // Do any additional setup after loading the view.
       
-      mapView.addAnnotations(annotations)
+      updateLocations()
       mapView.delegate = self
    }
 
+   fileprivate func updateLocations() {
+      UdacityAPI.getStudentLocations { [unowned self] (locations, error) in
+         locations.forEach { (location) in
+            let annotation = MKPointAnnotation()
+            annotation.title = "\(location.firstName) \(location.lastName)"
+            annotation.subtitle = "\(location.mediaURL)"
+            annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: location.latitude)!, longitude: CLLocationDegrees(exactly: location.longitude)!)
+            self.mapView.addAnnotation(annotation)
+         }
+      }
+   }
+   
+   @IBAction func refreshLocations(_ sender: UIBarButtonItem) {
+   }
+   
    // MARK: - MKMapViewDelegate
 
    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -54,4 +70,3 @@ class MapViewController: UIViewController, MKMapViewDelegate {
       }
    }
 }
-
