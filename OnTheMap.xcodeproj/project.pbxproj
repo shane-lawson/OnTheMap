@@ -15,7 +15,6 @@
 		343BF97D2453698300412DFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 343BF97B2453698300412DFB /* Main.storyboard */; };
 		343BF97F2453698500412DFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 343BF97E2453698500412DFB /* Assets.xcassets */; };
 		343BF9822453698500412DFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 343BF9802453698500412DFB /* LaunchScreen.storyboard */; };
-		343BF98A2454E68C00412DFB /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343BF9892454E68C00412DFB /* TestData.swift */; };
 		343BF98C2454E8DD00412DFB /* PinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343BF98B2454E8DD00412DFB /* PinTableViewController.swift */; };
 		343BF98E245547DA00412DFB /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343BF98D245547DA00412DFB /* AddLocationViewController.swift */; };
 		343BF990245547EC00412DFB /* AddLocationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343BF98F245547EC00412DFB /* AddLocationMapViewController.swift */; };
@@ -40,7 +39,6 @@
 		343BF97E2453698500412DFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		343BF9812453698500412DFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		343BF9832453698500412DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		343BF9892454E68C00412DFB /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		343BF98B2454E8DD00412DFB /* PinTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinTableViewController.swift; sourceTree = "<group>"; };
 		343BF98D245547DA00412DFB /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		343BF98F245547EC00412DFB /* AddLocationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationMapViewController.swift; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 				343BF97E2453698500412DFB /* Assets.xcassets */,
 				343BF9942455611B00412DFB /* Other */,
 				343BF9832453698500412DFB /* Info.plist */,
-				343BF9892454E68C00412DFB /* TestData.swift */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -249,7 +246,6 @@
 				343BF99224555C6B00412DFB /* LoginViewController.swift in Sources */,
 				343BF99F2456199E00412DFB /* SessionResponses.swift in Sources */,
 				343BF9A224561A0500412DFB /* Session.swift in Sources */,
-				343BF98A2454E68C00412DFB /* TestData.swift in Sources */,
 				343BF990245547EC00412DFB /* AddLocationMapViewController.swift in Sources */,
 				343BF9A624569DB700412DFB /* LocationTabBarController.swift in Sources */,
 				343BF98C2454E8DD00412DFB /* PinTableViewController.swift in Sources */,
