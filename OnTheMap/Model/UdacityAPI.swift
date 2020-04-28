@@ -117,4 +117,18 @@ class UdacityAPI {
          }
       }).resume()
    }
+   
+   class func postStudentLocation(mapString: String, mediaUrl: String, latitude: Float, longitude: Float, completionHandler: @escaping (Bool, Error?) -> Void) {
+      var request = URLRequest(url: Endpoints.studentLocation.url)
+      request.httpMethod = "POST"
+      request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+      request.httpBody = "{\"uniqueKey\": \"\(Auth.user!.uniqueKey)\", \"firstName\": \"\(Auth.user!.firstName)\", \"lastName\": \"\(Auth.user!.lastName)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(mediaUrl)\",\"latitude\": \(latitude), \"longitude\": \(longitude)}".data(using: .utf8)
+      URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
+         if error == nil {
+            completionHandler(true, nil)
+         } else {
+            completionHandler(false, error)
+         }
+      }).resume()
+   }
 }

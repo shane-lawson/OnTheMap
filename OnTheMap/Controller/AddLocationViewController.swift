@@ -52,6 +52,7 @@ class AddLocationViewController: UIViewController {
    
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       let viewController = segue.destination as! AddLocationMapViewController
+      viewController.mediaUrl = urlTextField.text!
       viewController.placemark = self.placemark
    }
 }

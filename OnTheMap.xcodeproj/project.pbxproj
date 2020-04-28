@@ -29,7 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3413F02A24587D38006A6FFE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = OnTheMap/Model/Objects/User.swift; sourceTree = "<group>"; };
+		3413F02A24587D38006A6FFE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3435EC022457C6E100462A8D /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		343BF9722453698300412DFB /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		343BF9752453698300412DFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				343BF9982456179600412DFB /* StudentLocation.swift */,
+				3413F02A24587D38006A6FFE /* User.swift */,
 				343BF9A124561A0500412DFB /* Session.swift */,
 			);
 			path = Objects;
@@ -92,7 +93,6 @@
 		343BF9692453698300412DFB = {
 			isa = PBXGroup;
 			children = (
-				3413F02A24587D38006A6FFE /* User.swift */,
 				343BF9742453698300412DFB /* OnTheMap */,
 				343BF9732453698300412DFB /* Products */,
 			);

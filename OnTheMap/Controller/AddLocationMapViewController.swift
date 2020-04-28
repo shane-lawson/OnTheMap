@@ -11,6 +11,7 @@ import MapKit
 
 class AddLocationMapViewController: UIViewController {
 
+   var mediaUrl: String!
    var placemark: CLPlacemark!
    
    @IBOutlet weak var mapView: MKMapView!
@@ -19,14 +20,12 @@ class AddLocationMapViewController: UIViewController {
    override func viewDidLoad() {
       super.viewDidLoad()
 
-      // Do any additional setup after loading the view.
       finishButton.layer.cornerRadius = 4.0
       let annotation = MKPointAnnotation()
       annotation.coordinate = placemark.location!.coordinate
       annotation.title = placemark.name
       mapView.addAnnotation(annotation)
       mapView.centerCoordinate = annotation.coordinate
-      mapView.delegate = self
     }
    
    override func viewDidAppear(_ animated: Bool) {
@@ -35,7 +34,16 @@ class AddLocationMapViewController: UIViewController {
    }
    
    @IBAction func finishButtonTapped(_ sender: UIButton) {
-      print("finish button tapped")
+      UdacityAPI.postStudentLocation(mapString: placemark.name!, mediaUrl: self.mediaUrl, latitude: Float(placemark.location!.coordinate.latitude), longitude: Float(placemark.location!.coordinate.longitude), completionHandler: handlePostResponse(success:error:))
    }
    
+   fileprivate func handlePostResponse(success: Bool, error: Error?) {
+      if success {
+         DispatchQueue.main.async { [unowned self] in
+            self.dismiss(animated: true, completion: nil)
+         }
+      } else {
+         print(error!)
+      }
+   }
 }
