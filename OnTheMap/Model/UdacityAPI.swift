@@ -11,20 +11,42 @@ import Foundation
 class UdacityAPI {
    struct Auth {
       static var session: Session?
+      static var account: Account?
+      static var user: User?
+      
+      static func logout() {
+         self.session = nil
+         self.account = nil
+         self.user = nil
+      }
    }
    
-   enum Endpoints: String {
-      case studentLocation = "https://onthemap-api.udacity.com/v1/StudentLocation"
-      case session = "https://onthemap-api.udacity.com/v1/session"
-      case studentLocationGET100 = "https://onthemap-api.udacity.com/v1/StudentLocation?limit=100"
+   enum Endpoints {
+      case studentLocation
+      case session
+      case studentLocationGET(Int)
+      case user(String)
+      
+      var stringValue: String {
+         switch self {
+         case .studentLocation:
+            return "https://onthemap-api.udacity.com/v1/StudentLocation"
+         case .studentLocationGET(let number):
+            return Endpoints.studentLocation.stringValue + "?limit=\(number)"
+         case .session:
+            return "https://onthemap-api.udacity.com/v1/session"
+         case .user(let user):
+            return "https://onthemap-api.udacity.com/v1/users/\(user)"
+         }
+      }
       
       var url: URL {
-         return URL(string: self.rawValue)!
+         return URL(string: self.stringValue)!
       }
    }
    
    class func getStudentLocations(completionHandler: @escaping ([StudentLocation], Error?) -> Void) {
-      let request = URLRequest(url: Endpoints.studentLocationGET100.url)
+      let request = URLRequest(url: Endpoints.studentLocationGET(100).url)
       URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
          guard let data = data else { completionHandler([], error); return }
          do{
@@ -54,6 +76,7 @@ class UdacityAPI {
          do {
             let responseObject = try JSONDecoder().decode(SessionPOSTResponse.self, from: newData)
             Auth.session = responseObject.session
+            Auth.account = responseObject.account
             completionHandler(true, nil)
          } catch {
             completionHandler(false, error)
@@ -75,8 +98,23 @@ class UdacityAPI {
       }
       URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
          guard error == nil else { completionHandler(false, error); return }
-         Auth.session = nil
+         Auth.logout()
          completionHandler(true, nil)
+      }).resume()
+   }
+   
+   class func getUserData(completionHandler: @escaping (Bool, Error?) -> Void) {
+      let request = URLRequest(url: Endpoints.user(Auth.account!.key).url)
+      URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
+         guard let data = data else { completionHandler(false, error); return }
+         let newData = data.subdata(in: 5..<data.count)
+         do {
+            let responseObject = try JSONDecoder().decode(User.self, from: newData)
+            Auth.user = responseObject
+            completionHandler(true, nil)
+         } catch {
+            completionHandler(false, error)
+         }
       }).resume()
    }
 }

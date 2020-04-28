@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3413F02B24587D38006A6FFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3413F02A24587D38006A6FFE /* User.swift */; };
 		3435EC032457C6E100462A8D /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3435EC022457C6E100462A8D /* LoginRequest.swift */; };
 		343BF9762453698300412DFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343BF9752453698300412DFB /* AppDelegate.swift */; };
 		343BF9782453698300412DFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343BF9772453698300412DFB /* SceneDelegate.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3413F02A24587D38006A6FFE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = OnTheMap/Model/Objects/User.swift; sourceTree = "<group>"; };
 		3435EC022457C6E100462A8D /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		343BF9722453698300412DFB /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		343BF9752453698300412DFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 		343BF9692453698300412DFB = {
 			isa = PBXGroup;
 			children = (
+				3413F02A24587D38006A6FFE /* User.swift */,
 				343BF9742453698300412DFB /* OnTheMap */,
 				343BF9732453698300412DFB /* Products */,
 			);
@@ -234,6 +237,7 @@
 				343BF9A4245681F900412DFB /* UdacityAPI.swift in Sources */,
 				343BF9992456179600412DFB /* StudentLocation.swift in Sources */,
 				343BF97A2453698300412DFB /* MapViewController.swift in Sources */,
+				3413F02B24587D38006A6FFE /* User.swift in Sources */,
 				343BF98E245547DA00412DFB /* AddLocationViewController.swift in Sources */,
 				343BF99B245618B000412DFB /* StudentLocationResponses.swift in Sources */,
 				343BF9762453698300412DFB /* AppDelegate.swift in Sources */,

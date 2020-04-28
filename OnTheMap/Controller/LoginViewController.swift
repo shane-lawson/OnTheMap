@@ -38,6 +38,14 @@ class LoginViewController: UIViewController {
    
    fileprivate func handleLoginResponse(success: Bool, error: Error?) {
       if success {
+         UdacityAPI.getUserData(completionHandler: handleUserDataResponse(success:error:))
+      } else {
+         print(error!)
+      }
+   }
+   
+   fileprivate func handleUserDataResponse(success: Bool, error: Error?) {
+      if success {
          DispatchQueue.main.async { [unowned self] in
             self.setLoggingIn(false)
             self.performSegue(withIdentifier: "loginSuccess", sender: self)
