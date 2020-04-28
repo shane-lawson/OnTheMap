@@ -57,7 +57,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
          return Optional(pinView)
       } else {
          let initialPinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-         initialPinView.animatesDrop = true
          initialPinView.pinTintColor = #colorLiteral(red: 0.1648017168, green: 0.7030932307, blue: 0.895126164, alpha: 1)
          initialPinView.canShowCallout = true
          let button = UIButton(type: .detailDisclosure)
