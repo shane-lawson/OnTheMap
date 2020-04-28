@@ -43,6 +43,7 @@ class AddLocationMapViewController: UIViewController {
       if success {
          DispatchQueue.main.async { [unowned self] in
             self.activityIndicator.stopAnimating()
+            NotificationCenter.default.post(name: NSNotification.Name("update_locations"), object: nil)
             self.dismiss(animated: true, completion: nil)
          }
       } else {

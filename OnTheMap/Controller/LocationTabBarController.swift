@@ -19,6 +19,16 @@ class LocationTabBarController: UITabBarController {
 
       refreshAnnotations()
    }
+   
+   override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      NotificationCenter.default.addObserver(self, selector: #selector(refreshAnnotations), name: NSNotification.Name("update_locations"), object: nil)
+   }
+   
+   override func viewWillDisappear(_ animated: Bool) {
+      super.viewWillDisappear(animated)
+      NotificationCenter.default.removeObserver(self, name: NSNotification.Name("update_locations"), object: nil)
+   }
     
    @IBAction func refresh(_ sender: UIBarButtonItem) {
       refreshAnnotations()
@@ -34,7 +44,7 @@ class LocationTabBarController: UITabBarController {
       }
    }
  
-   fileprivate func refreshAnnotations() {
+   @objc func refreshAnnotations() {
       UdacityAPI.getStudentLocations(completionHandler: storeStudentLocations(locations:error:))
    }
    
