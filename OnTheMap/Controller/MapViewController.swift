@@ -73,9 +73,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
       // open url in safari view controller
       if control == view.rightCalloutAccessoryView {
          if let toOpen = view.annotation?.subtitle! {
-            let safariVC = SFSafariViewController(url: URL(string: toOpen)!)
-            safariVC.dismissButtonStyle = .close
-            self.present(safariVC, animated: true)
+            if let url = URL(string: toOpen), UIApplication.shared.canOpenURL(url) {
+               let safariVC = SFSafariViewController(url: url)
+               safariVC.dismissButtonStyle = .close
+               self.present(safariVC, animated: true)
+            } else {
+               let alertVC = UIAlertController(title: "Invalid URL", message: "Please select a valid URL.", preferredStyle: .alert)
+               alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+               self.present(alertVC, animated: true, completion: nil)
+            }
          }
       }
    }
