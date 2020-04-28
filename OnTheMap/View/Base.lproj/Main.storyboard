@@ -232,13 +232,19 @@
                                     <constraint firstAttribute="width" constant="88" id="b4y-7h-U5j"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="TMw-x6-Mva">
+                                <rect key="frame" x="188.5" y="428" width="37" height="37"/>
+                                <color key="color" red="0.1648017168" green="0.70309323069999996" blue="0.895126164" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="7sa-S3-4b6" firstAttribute="centerX" secondItem="OLh-MT-nRO" secondAttribute="centerX" id="05V-gP-GXm"/>
+                            <constraint firstItem="TMw-x6-Mva" firstAttribute="top" secondItem="4x3-I6-Kd3" secondAttribute="bottom" constant="33" id="6pj-x9-DVN"/>
                             <constraint firstItem="7sa-S3-4b6" firstAttribute="top" secondItem="OLh-MT-nRO" secondAttribute="top" constant="55" id="M58-gR-0eG"/>
                             <constraint firstItem="4x3-I6-Kd3" firstAttribute="top" secondItem="7sa-S3-4b6" secondAttribute="bottom" constant="56" id="Vo8-C0-7av"/>
                             <constraint firstItem="4x3-I6-Kd3" firstAttribute="centerX" secondItem="OLh-MT-nRO" secondAttribute="centerX" id="ZFy-mZ-PQc"/>
+                            <constraint firstItem="TMw-x6-Mva" firstAttribute="centerX" secondItem="OLh-MT-nRO" secondAttribute="centerX" id="jLY-TD-ne4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OLh-MT-nRO"/>
                     </view>
@@ -250,6 +256,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="TMw-x6-Mva" id="gCT-jz-gl8"/>
                         <outlet property="findLocationButton" destination="PZE-bm-NKu" id="p5p-j2-hjJ"/>
                         <outlet property="locationTextField" destination="01K-Ze-IRq" id="gep-Aj-c86"/>
                         <outlet property="navBar" destination="aiN-1b-bE9" id="w18-3C-Rdc"/>

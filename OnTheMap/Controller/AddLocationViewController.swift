@@ -17,6 +17,7 @@ class AddLocationViewController: UIViewController {
    @IBOutlet weak var urlTextField: UITextField!
    @IBOutlet weak var findLocationButton: UIButton!
    @IBOutlet weak var navBar: UINavigationItem!
+   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
    
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -32,6 +33,7 @@ class AddLocationViewController: UIViewController {
          present(alertVC, animated: true, completion: nil)
          return
       }
+      showFindingLocation(true)
       CLGeocoder().geocodeAddressString(locationTextField.text!, completionHandler: handleForwardGeocodeAttempt(placemark:error:))
    }
    
@@ -47,6 +49,7 @@ class AddLocationViewController: UIViewController {
          return
       }
       self.placemark = placemark.first
+      showFindingLocation(false)
       performSegue(withIdentifier: "showMapLocation", sender: nil)
    }
    
@@ -54,5 +57,16 @@ class AddLocationViewController: UIViewController {
       let viewController = segue.destination as! AddLocationMapViewController
       viewController.mediaUrl = urlTextField.text!
       viewController.placemark = self.placemark
+   }
+   
+   fileprivate func showFindingLocation(_ isFinding: Bool) {
+      if isFinding {
+         activityIndicator.startAnimating()
+      } else {
+         activityIndicator.stopAnimating()
+      }
+      locationTextField.isEnabled = !isFinding
+      urlTextField.isEnabled = !isFinding
+      findLocationButton.isEnabled = !isFinding
    }
 }
