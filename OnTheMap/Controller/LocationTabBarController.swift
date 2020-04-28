@@ -26,7 +26,12 @@ class LocationTabBarController: UITabBarController {
    }
    
    @IBAction func logout(_ sender: UIBarButtonItem) {
-      
+      UdacityAPI.logout { (success, error) in
+         guard success else { print(error!); return }
+         DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "logoutSuccess", sender: self)
+         }
+      }
    }
  
    fileprivate func refreshAnnotations() {

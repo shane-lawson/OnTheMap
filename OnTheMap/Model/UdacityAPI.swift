@@ -10,7 +10,7 @@ import Foundation
 
 class UdacityAPI {
    struct Auth {
-      static var session: Session!
+      static var session: Session?
    }
    
    enum Endpoints: String {
@@ -53,6 +53,25 @@ class UdacityAPI {
          } catch {
             completionHandler(false, error)
          }
+      }).resume()
+   }
+   
+   class func logout(completionHandler: @escaping (Bool,Error?) -> Void) {
+      // modified course example for deleting session on Udacity API
+      var request = URLRequest(url: Endpoints.session.url)
+      request.httpMethod = "DELETE"
+      var xsrfCookie: HTTPCookie? = nil
+      let sharedCookieStorage = HTTPCookieStorage.shared
+      for cookie in sharedCookieStorage.cookies! {
+         if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+      }
+      if let xsrfCookie = xsrfCookie {
+         request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+      }
+      URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
+         guard error == nil else { completionHandler(false, error); return }
+         Auth.session = nil
+         completionHandler(true, nil)
       }).resume()
    }
 }

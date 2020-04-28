@@ -28,14 +28,19 @@ class LoginViewController: UIViewController {
    }
    
    @IBAction func signUpButtonTapped(_ sender: UIButton) {
-      UIApplication.shared.open(URL(string: "https://auth.udacity.com/sign-up?next=https://classroom.udacity.com/authenticated")!, options: [:], completionHandler: nil)
+      UIApplication.shared.open(URL(string: "https://auth.udacity.com/sign-up")!, options: [:], completionHandler: nil)
+   }
+   
+   @IBAction func revertLoginSegue(_ segue: UIStoryboardSegue) {
+      emailTextField.text = nil
+      passwordTextField.text = nil
    }
    
    fileprivate func handleLoginResponse(success: Bool, error: Error?) {
       if success {
          DispatchQueue.main.async { [unowned self] in
             self.setLoggingIn(false)
-            self.performSegue(withIdentifier: "loginSuccess", sender: nil)
+            self.performSegue(withIdentifier: "loginSuccess", sender: self)
          }
       } else {
          print(error!)
