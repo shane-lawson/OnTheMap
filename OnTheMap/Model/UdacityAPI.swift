@@ -53,7 +53,12 @@ class UdacityAPI {
             let responseObject = try JSONDecoder().decode(StudentLocationGETResponse.self, from: data)
             completionHandler(responseObject.results, nil)
          } catch {
-            completionHandler([], error)
+            do {
+               let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)
+               completionHandler([], errorResponse)
+            } catch {
+               completionHandler([], error)
+            }
          }
       }).resume()
    }

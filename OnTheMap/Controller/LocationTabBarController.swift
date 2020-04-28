@@ -39,8 +39,13 @@ class LocationTabBarController: UITabBarController {
    }
    
    fileprivate func storeStudentLocations(locations: [StudentInformation], error: Error?) {
-      guard error == nil else { print(error!); return }
       DispatchQueue.main.async { [unowned self] in
+         guard error == nil else {
+            let alertVC = UIAlertController(title: "Download error", message: "Could not download locations. Please try again leter.", preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alertVC, animated: true, completion: nil)
+            return
+         }
          self.appDelegate.locations.removeAll()
          locations.forEach {
             self.appDelegate.locations.append($0)
