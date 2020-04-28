@@ -16,7 +16,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
       let appDelegate = UIApplication.shared.delegate as! AppDelegate
       return appDelegate.locations
    }
-   var annotations = [MKPointAnnotation]()
    
    @IBOutlet weak var mapView: MKMapView!
    
@@ -38,9 +37,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
    }
 
    @objc func setupMapAnnotations() {
-      mapView.removeAnnotations(annotations)
-      annotations.removeAll()
-      annotations = locations.map { (location) -> MKPointAnnotation in
+      mapView.removeAnnotations(mapView.annotations)
+      let annotations = locations.map { (location) -> MKPointAnnotation in
          let annotation = MKPointAnnotation()
          annotation.title = "\(location.firstName) \(location.lastName)"
          annotation.subtitle = "\(location.mediaURL)"

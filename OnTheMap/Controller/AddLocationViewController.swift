@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import MapKit
 
 class AddLocationViewController: UIViewController {
 
+   var placemark: CLPlacemark!
+   
    @IBOutlet weak var locationTextField: UITextField!
    @IBOutlet weak var urlTextField: UITextField!
    @IBOutlet weak var findLocationButton: UIButton!
@@ -23,22 +26,32 @@ class AddLocationViewController: UIViewController {
     }
     
    @IBAction func findLocationButton(_ sender: UIButton) {
-      // TODO: Implement find location
-      performSegue(withIdentifier: "showMapLocation", sender: nil)
+      guard urlTextField.text != "" else {
+         let alertVC = UIAlertController(title: "URL field is blank", message: "Please input a URL.", preferredStyle: .alert)
+         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+         present(alertVC, animated: true, completion: nil)
+         return
+      }
+      CLGeocoder().geocodeAddressString(locationTextField.text!, completionHandler: handleForwardGeocodeAttempt(placemark:error:))
    }
    
    @IBAction func cancelButton(_ sender: UIBarButtonItem) {
       dismiss(animated: true, completion: nil)
    }
    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+   fileprivate func handleForwardGeocodeAttempt(placemark: [CLPlacemark]?, error: Error?) {
+      guard let placemark = placemark else {
+         let alertVC = UIAlertController(title: "Invalid Location", message: "Please try again.", preferredStyle: .alert)
+         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+         present(alertVC, animated: true, completion: nil)
+         return
+      }
+      self.placemark = placemark.first
+      performSegue(withIdentifier: "showMapLocation", sender: nil)
+   }
+   
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      let viewController = segue.destination as! AddLocationMapViewController
+      viewController.placemark = self.placemark
+   }
 }

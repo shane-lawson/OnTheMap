@@ -41,6 +41,7 @@ class LocationTabBarController: UITabBarController {
    fileprivate func storeStudentLocations(locations: [StudentLocation], error: Error?) {
       guard error == nil else { print(error!); return }
       DispatchQueue.main.async { [unowned self] in
+         self.appDelegate.locations.removeAll()
          locations.forEach {
             self.appDelegate.locations.append($0)
          }
