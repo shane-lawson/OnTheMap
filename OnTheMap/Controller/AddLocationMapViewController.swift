@@ -16,6 +16,7 @@ class AddLocationMapViewController: UIViewController {
    
    @IBOutlet weak var mapView: MKMapView!
    @IBOutlet weak var finishButton: UIButton!
+   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
    
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -34,12 +35,14 @@ class AddLocationMapViewController: UIViewController {
    }
    
    @IBAction func finishButtonTapped(_ sender: UIButton) {
+      activityIndicator.startAnimating()
       UdacityAPI.postStudentLocation(mapString: placemark.name!, mediaUrl: self.mediaUrl, latitude: Float(placemark.location!.coordinate.latitude), longitude: Float(placemark.location!.coordinate.longitude), completionHandler: handlePostResponse(success:error:))
    }
    
    fileprivate func handlePostResponse(success: Bool, error: Error?) {
       if success {
          DispatchQueue.main.async { [unowned self] in
+            self.activityIndicator.stopAnimating()
             self.dismiss(animated: true, completion: nil)
          }
       } else {

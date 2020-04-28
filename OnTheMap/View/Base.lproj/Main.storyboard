@@ -285,6 +285,10 @@
                                     <action selector="finishButtonTapped:" destination="B69-17-mVQ" eventType="touchUpInside" id="P2Y-Wl-es4"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="vIL-jg-zIB">
+                                <rect key="frame" x="367" y="714" width="20" height="34"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -293,13 +297,17 @@
                             <constraint firstItem="SbY-YR-Dtb" firstAttribute="leading" secondItem="rJL-qQ-pB1" secondAttribute="leading" constant="20" id="BD1-Mr-7tv"/>
                             <constraint firstItem="ZuI-Qn-khw" firstAttribute="leading" secondItem="rJL-qQ-pB1" secondAttribute="leading" id="Cat-Zk-EFQ"/>
                             <constraint firstItem="rJL-qQ-pB1" firstAttribute="bottom" secondItem="SbY-YR-Dtb" secondAttribute="bottom" constant="60" id="Mgh-7z-FyZ"/>
+                            <constraint firstItem="SbY-YR-Dtb" firstAttribute="trailing" secondItem="vIL-jg-zIB" secondAttribute="trailing" constant="7" id="a2U-Va-K3Z"/>
+                            <constraint firstItem="vIL-jg-zIB" firstAttribute="bottom" secondItem="SbY-YR-Dtb" secondAttribute="bottom" id="cpx-IM-frE"/>
                             <constraint firstItem="ZuI-Qn-khw" firstAttribute="top" secondItem="oUr-Kl-IMD" secondAttribute="top" id="m5n-kw-AZO"/>
                             <constraint firstItem="ZuI-Qn-khw" firstAttribute="trailing" secondItem="rJL-qQ-pB1" secondAttribute="trailing" id="uzK-V1-sAL"/>
+                            <constraint firstItem="vIL-jg-zIB" firstAttribute="top" secondItem="SbY-YR-Dtb" secondAttribute="top" id="w6n-Wr-TLZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rJL-qQ-pB1"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Location" id="mK6-yM-Z03"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="vIL-jg-zIB" id="Sko-r3-Li6"/>
                         <outlet property="finishButton" destination="SbY-YR-Dtb" id="GRa-FD-VFr"/>
                         <outlet property="mapView" destination="ZuI-Qn-khw" id="V6d-95-O3g"/>
                     </connections>
