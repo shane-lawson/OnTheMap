@@ -12,13 +12,19 @@ import SafariServices
 
 class MapViewController: UIViewController, MKMapViewDelegate {
 
+   // MARK: Properties
+
    var locations: [StudentInformation] {
       let appDelegate = UIApplication.shared.delegate as! AppDelegate
       return appDelegate.locations
    }
    
+   // MARK: IBOutlets
+
    @IBOutlet weak var mapView: MKMapView!
    
+   // MARK: Overrides
+
    override func viewDidLoad() {
       super.viewDidLoad()
 
@@ -35,6 +41,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
       super.viewWillDisappear(animated)
       NotificationCenter.default.removeObserver(self, name: NSNotification.Name("locations_updated"), object: nil)
    }
+
+   // MARK: Helpers
 
    @objc func setupMapAnnotations() {
       mapView.removeAnnotations(mapView.annotations)
@@ -79,6 +87,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             if let url = URL(string: toOpen), UIApplication.shared.canOpenURL(url) {
                show(url: url)
             } else if let url = URL(string: "http://" + toOpen), UIApplication.shared.canOpenURL(url)  {
+               // canOpenURL will return false if there isnt "http://" or "https://", so try it again
                show(url: url)
             } else {
                let alertVC = UIAlertController(title: "Invalid URL", message: "Please select a valid URL.", preferredStyle: .alert)

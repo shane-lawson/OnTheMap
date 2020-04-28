@@ -11,13 +11,19 @@ import MapKit
 
 class AddLocationMapViewController: UIViewController {
 
+   // MARK: Properties
+
    var mediaUrl: String!
    var placemark: CLPlacemark!
    
+   // MARK: IBOutlets
+
    @IBOutlet weak var mapView: MKMapView!
    @IBOutlet weak var finishButton: UIButton!
    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-   
+
+   // MARK: Overrides
+
    override func viewDidLoad() {
       super.viewDidLoad()
 
@@ -34,11 +40,15 @@ class AddLocationMapViewController: UIViewController {
       mapView.setRegion(MKCoordinateRegion(center: placemark.location!.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)), animated: true)
    }
    
+   // MARK: IBActions
+
    @IBAction func finishButtonTapped(_ sender: UIButton) {
       activityIndicator.startAnimating()
       UdacityAPI.postStudentLocation(mapString: placemark.name!, mediaUrl: self.mediaUrl, latitude: Float(placemark.location!.coordinate.latitude), longitude: Float(placemark.location!.coordinate.longitude), completionHandler: handlePostResponse(success:error:))
    }
    
+   // MARK: Helpers
+
    fileprivate func handlePostResponse(success: Bool, error: Error?) {
       if success {
          DispatchQueue.main.async { [unowned self] in

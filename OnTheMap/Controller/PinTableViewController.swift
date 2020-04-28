@@ -12,14 +12,11 @@ import SafariServices
 
 class PinTableViewController: UITableViewController {
 
+   // MARK: Properties
+
    var locations: [StudentInformation] {
       let appDelegate = UIApplication.shared.delegate as! AppDelegate
       return appDelegate.locations
-   }
-   
-   override func viewDidLoad() {
-      super.viewDidLoad()
-      
    }
 
    // MARK: - UITableViewDataSource

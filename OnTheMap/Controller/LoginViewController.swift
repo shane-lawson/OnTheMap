@@ -10,11 +10,15 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+   // MARK: IBOutlets
+
    @IBOutlet weak var emailTextField: UITextField!
    @IBOutlet weak var passwordTextField: UITextField!
    @IBOutlet weak var loginButton: UIButton!
    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
    
+   // MARK: Overrides
+
    override func viewDidLoad() {
       super.viewDidLoad()
 
@@ -22,6 +26,8 @@ class LoginViewController: UIViewController {
       loginButton.layer.cornerRadius = 4.0
     }
    
+   // MARK: IBActions
+
    @IBAction func loginButtonTapped(_ sender: UIButton) {
       setLoggingIn(true)
       if emailTextField.text! == "" {
@@ -41,7 +47,9 @@ class LoginViewController: UIViewController {
       emailTextField.text = nil
       passwordTextField.text = nil
    }
-   
+      
+   // MARK: Helpers
+
    fileprivate func handleLoginResponse(success: Bool, error: Error?) {
       if success {
          UdacityAPI.getUserData(completionHandler: handleUserDataResponse(success:error:))
