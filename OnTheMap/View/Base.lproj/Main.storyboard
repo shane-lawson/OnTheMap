@@ -39,7 +39,7 @@
                                             <constraint firstAttribute="height" constant="34" id="Lxw-7z-4hz"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkV-SP-A3m">
                                         <rect key="frame" x="0.0" y="84" width="250" height="34"/>
@@ -52,7 +52,6 @@
                                         </state>
                                         <connections>
                                             <action selector="loginButtonTapped:" destination="ez2-cr-fBX" eventType="touchUpInside" id="Qc4-CC-t49"/>
-                                            <segue destination="NeM-AH-jFe" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="yDv-bN-SEo"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -78,27 +77,35 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="8du-cQ-e9o">
+                                <rect key="frame" x="188.5" y="478" width="37" height="37"/>
+                                <color key="color" red="0.1648017168" green="0.70309323069999996" blue="0.895126164" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="8du-cQ-e9o" firstAttribute="top" secondItem="mQe-D8-HUK" secondAttribute="bottom" constant="21" id="KsA-rS-Y6v"/>
                             <constraint firstItem="rFt-yy-ocf" firstAttribute="top" secondItem="gVX-DK-Ivq" secondAttribute="bottom" constant="66" id="SXd-EN-BST"/>
                             <constraint firstItem="gVX-DK-Ivq" firstAttribute="top" secondItem="mMe-QB-qrY" secondAttribute="top" constant="69" id="TPq-Ko-pn2"/>
                             <constraint firstItem="rFt-yy-ocf" firstAttribute="centerX" secondItem="mMe-QB-qrY" secondAttribute="centerX" id="Ygo-Te-BPL"/>
                             <constraint firstItem="mQe-D8-HUK" firstAttribute="centerX" secondItem="mMe-QB-qrY" secondAttribute="centerX" id="ZWw-I9-ojK"/>
                             <constraint firstItem="mQe-D8-HUK" firstAttribute="top" secondItem="rFt-yy-ocf" secondAttribute="bottom" constant="20" id="cFl-P3-S1s"/>
                             <constraint firstItem="gVX-DK-Ivq" firstAttribute="centerX" secondItem="mMe-QB-qrY" secondAttribute="centerX" id="pvf-KX-jB1"/>
+                            <constraint firstItem="8du-cQ-e9o" firstAttribute="centerX" secondItem="mMe-QB-qrY" secondAttribute="centerX" id="sgd-8D-9UA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mMe-QB-qrY"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="8du-cQ-e9o" id="VZQ-tm-C9z"/>
                         <outlet property="emailTextField" destination="hbR-Wc-HuJ" id="2O8-Nf-sMf"/>
                         <outlet property="loginButton" destination="LkV-SP-A3m" id="5ki-TX-kV0"/>
                         <outlet property="passwordTextField" destination="2Mz-v9-Tbn" id="aiu-od-gbJ"/>
+                        <segue destination="NeM-AH-jFe" kind="presentation" identifier="loginSuccess" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="w2q-Cj-jj9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fm6-ID-IHC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3316" y="74"/>
+            <point key="canvasLocation" x="-3317.3913043478265" y="73.660714285714278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ohp-sj-sP5">
@@ -120,16 +127,24 @@
         <!--On the Map-->
         <scene sceneID="4eU-oa-Zuo">
             <objects>
-                <tabBarController id="yeO-8j-zeS" sceneMemberID="viewController">
+                <tabBarController id="yeO-8j-zeS" customClass="LocationTabBarController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="On the Map" id="RvT-GJ-s1t">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="o3C-bb-whJ"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="o3C-bb-whJ">
+                            <connections>
+                                <action selector="logout:" destination="yeO-8j-zeS" id="ZG5-Fu-v0U"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem image="icon_addpin" id="ucB-br-eGu">
                                 <connections>
                                     <segue destination="95C-Mp-WGC" kind="presentation" id="Be6-oJ-Zu6"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="icon_refresh" id="l0f-ZD-Vv1"/>
+                            <barButtonItem title="Item" image="icon_refresh" id="l0f-ZD-Vv1">
+                                <connections>
+                                    <action selector="refresh:" destination="yeO-8j-zeS" id="tXm-Jq-YWy"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UVw-mO-61q">

@@ -12,11 +12,13 @@ import SafariServices
 
 class PinTableViewController: UITableViewController {
 
-   var annotations: [MKPointAnnotation] = TestData.annotations
-
+   var locations: [StudentLocation] {
+      let appDelegate = UIApplication.shared.delegate as! AppDelegate
+      return appDelegate.locations
+   }
+   
    override func viewDidLoad() {
       super.viewDidLoad()
-
       
    }
 
@@ -27,15 +29,15 @@ class PinTableViewController: UITableViewController {
    }
 
    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return annotations.count
+      return locations.count
    }
 
    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let annotation = annotations[indexPath.row]
+      let location = locations[indexPath.row]
       let cell = tableView.dequeueReusableCell(withIdentifier: "pinCell", for: indexPath)
 
-      cell.textLabel?.text = annotation.title
-      cell.detailTextLabel?.text = annotation.subtitle
+      cell.textLabel?.text = "\(location.firstName) \(location.lastName)"
+      cell.detailTextLabel?.text = "\(location.mediaURL)"
       cell.detailTextLabel?.textColor = .systemGray
 
       return cell
@@ -45,8 +47,8 @@ class PinTableViewController: UITableViewController {
    
    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       // open url in safari view controller
-      let annotation = annotations[indexPath.row]
-      let safariVC = SFSafariViewController(url: URL(string: annotation.subtitle!)!)
+      let location = locations[indexPath.row]
+      let safariVC = SFSafariViewController(url: URL(string: location.mediaURL)!)
       safariVC.dismissButtonStyle = .close
       self.present(safariVC, animated: true)
    }

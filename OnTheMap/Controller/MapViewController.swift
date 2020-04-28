@@ -12,32 +12,28 @@ import SafariServices
 
 class MapViewController: UIViewController, MKMapViewDelegate {
 
-   @IBOutlet weak var mapView: MKMapView!
+   var locations: [StudentLocation] {
+      let appDelegate = UIApplication.shared.delegate as! AppDelegate
+      return appDelegate.locations
+   }
    
-   var annotations: [MKPointAnnotation] = TestData.annotations
-   var studentLocations = [StudentLocation]()
+   @IBOutlet weak var mapView: MKMapView!
    
    override func viewDidLoad() {
       super.viewDidLoad()
       // Do any additional setup after loading the view.
-      
-      updateLocations()
+      setupMapAnnotations()
       mapView.delegate = self
    }
-
-   fileprivate func updateLocations() {
-      UdacityAPI.getStudentLocations { [unowned self] (locations, error) in
-         locations.forEach { (location) in
-            let annotation = MKPointAnnotation()
-            annotation.title = "\(location.firstName) \(location.lastName)"
-            annotation.subtitle = "\(location.mediaURL)"
-            annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: location.latitude)!, longitude: CLLocationDegrees(exactly: location.longitude)!)
-            self.mapView.addAnnotation(annotation)
-         }
-      }
-   }
    
-   @IBAction func refreshLocations(_ sender: UIBarButtonItem) {
+   func setupMapAnnotations() {
+      locations.forEach {
+         let annotation = MKPointAnnotation()
+         annotation.title = "\($0.firstName) \($0.lastName)"
+         annotation.subtitle = "\($0.mediaURL)"
+         annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: $0.latitude)!, longitude: CLLocationDegrees(exactly: $0.longitude)!)
+         mapView.addAnnotation(annotation)
+      }
    }
    
    // MARK: - MKMapViewDelegate
