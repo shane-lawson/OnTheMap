@@ -59,6 +59,7 @@ class AddLocationViewController: UIViewController {
 
    fileprivate func handleForwardGeocodeAttempt(placemark: [CLPlacemark]?, error: Error?) {
       guard let placemark = placemark else {
+         showFindingLocation(false)
          let alertVC = UIAlertController(title: "Invalid Location", message: "Please try again.", preferredStyle: .alert)
          alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
          present(alertVC, animated: true, completion: nil)
