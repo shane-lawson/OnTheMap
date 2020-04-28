@@ -32,7 +32,7 @@ class UdacityAPI {
          case .studentLocation:
             return "https://onthemap-api.udacity.com/v1/StudentLocation"
          case .studentLocationGET(let number):
-            return Endpoints.studentLocation.stringValue + "?limit=\(number)"
+            return Endpoints.studentLocation.stringValue + "?limit=\(number)&order=-updatedAt"
          case .session:
             return "https://onthemap-api.udacity.com/v1/session"
          case .user(let user):
