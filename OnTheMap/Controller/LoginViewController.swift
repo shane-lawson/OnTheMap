@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
    @IBOutlet weak var emailTextField: UITextField!
    @IBOutlet weak var passwordTextField: UITextField!
    @IBOutlet weak var loginButton: UIButton!
+   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
    
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -22,22 +23,33 @@ class LoginViewController: UIViewController {
     }
    
    @IBAction func loginButtonTapped(_ sender: UIButton) {
-      // TODO: Implement login. REMOVE TEMPORARY SEGUE
-      print("login button tapped")
+      setLoggingIn(true)
+      UdacityAPI.login(username: emailTextField.text!, password: passwordTextField.text!, completionHandler: handleLoginResponse(success:error:))
    }
    
    @IBAction func signUpButtonTapped(_ sender: UIButton) {
       UIApplication.shared.open(URL(string: "https://auth.udacity.com/sign-up?next=https://classroom.udacity.com/authenticated")!, options: [:], completionHandler: nil)
    }
    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+   fileprivate func handleLoginResponse(success: Bool, error: Error?) {
+      if success {
+         DispatchQueue.main.async { [unowned self] in
+            self.setLoggingIn(false)
+            self.performSegue(withIdentifier: "loginSuccess", sender: nil)
+         }
+      } else {
+         print(error!)
+      }
+   }
+   
+   fileprivate func setLoggingIn(_ loggingIn: Bool) {
+      if loggingIn {
+         activityIndicator.startAnimating()
+      } else {
+         activityIndicator.stopAnimating()
+      }
+      loginButton.isEnabled = !loggingIn
+      emailTextField.isEnabled = !loggingIn
+      passwordTextField.isEnabled = !loggingIn
+   }
 }
