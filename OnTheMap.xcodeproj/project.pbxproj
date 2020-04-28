@@ -26,6 +26,7 @@
 		343BF9A224561A0500412DFB /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343BF9A124561A0500412DFB /* Session.swift */; };
 		343BF9A4245681F900412DFB /* UdacityAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343BF9A3245681F900412DFB /* UdacityAPI.swift */; };
 		343BF9A624569DB700412DFB /* LocationTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343BF9A524569DB700412DFB /* LocationTabBarController.swift */; };
+		348D734F245890FE00758C5F /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348D734E245890FE00758C5F /* ErrorResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		343BF9A124561A0500412DFB /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		343BF9A3245681F900412DFB /* UdacityAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityAPI.swift; sourceTree = "<group>"; };
 		343BF9A524569DB700412DFB /* LocationTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTabBarController.swift; sourceTree = "<group>"; };
+		348D734E245890FE00758C5F /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			children = (
 				343BF99A245618B000412DFB /* StudentLocationResponses.swift */,
 				343BF99E2456199E00412DFB /* SessionResponses.swift */,
+				348D734E245890FE00758C5F /* ErrorResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				3413F02B24587D38006A6FFE /* User.swift in Sources */,
 				343BF98E245547DA00412DFB /* AddLocationViewController.swift in Sources */,
 				343BF99B245618B000412DFB /* StudentLocationResponses.swift in Sources */,
+				348D734F245890FE00758C5F /* ErrorResponse.swift in Sources */,
 				343BF9762453698300412DFB /* AppDelegate.swift in Sources */,
 				343BF9782453698300412DFB /* SceneDelegate.swift in Sources */,
 				343BF99224555C6B00412DFB /* LoginViewController.swift in Sources */,

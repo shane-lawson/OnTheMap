@@ -24,7 +24,13 @@ class LoginViewController: UIViewController {
    
    @IBAction func loginButtonTapped(_ sender: UIButton) {
       setLoggingIn(true)
-      UdacityAPI.login(username: emailTextField.text!, password: passwordTextField.text!, completionHandler: handleLoginResponse(success:error:))
+      if emailTextField.text! == "" {
+         showLoginFailed(message: "It looks like you forgot to enter an email address.")
+      } else if passwordTextField.text! == "" {
+         showLoginFailed(message: "It looks like you forgot to enter a password.")
+      } else {
+         UdacityAPI.login(username: emailTextField.text!, password: passwordTextField.text!, completionHandler: handleLoginResponse(success:error:))
+      }
    }
    
    @IBAction func signUpButtonTapped(_ sender: UIButton) {
@@ -40,7 +46,9 @@ class LoginViewController: UIViewController {
       if success {
          UdacityAPI.getUserData(completionHandler: handleUserDataResponse(success:error:))
       } else {
-         print(error!)
+         DispatchQueue.main.async { [unowned self] in
+            self.showLoginFailed(message: error!.localizedDescription)
+         }
       }
    }
    
@@ -64,5 +72,12 @@ class LoginViewController: UIViewController {
       loginButton.isEnabled = !loggingIn
       emailTextField.isEnabled = !loggingIn
       passwordTextField.isEnabled = !loggingIn
+   }
+   
+   fileprivate func showLoginFailed(message: String) {
+      self.setLoggingIn(false)
+      let alertVC = UIAlertController(title: "Login failed", message: message, preferredStyle: .alert)
+      alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+      self.present(alertVC, animated: true, completion: nil)
    }
 }

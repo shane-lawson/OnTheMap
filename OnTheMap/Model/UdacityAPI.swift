@@ -79,7 +79,12 @@ class UdacityAPI {
             Auth.account = responseObject.account
             completionHandler(true, nil)
          } catch {
-            completionHandler(false, error)
+            do {
+               let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: newData)
+               completionHandler(false, errorResponse)
+            } catch {
+               completionHandler(false, error)
+            }
          }
       }).resume()
    }
