@@ -47,11 +47,17 @@ class PinTableViewController: UITableViewController {
    
    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       // open url in safari view controller
-      let location = locations[indexPath.row]
-      if let url = URL(string: location.mediaURL), UIApplication.shared.canOpenURL(url) {
+      func show(url: URL) {
          let safariVC = SFSafariViewController(url: url)
          safariVC.dismissButtonStyle = .close
          self.present(safariVC, animated: true)
+      }
+      
+      let location = locations[indexPath.row]
+      if let url = URL(string: location.mediaURL), UIApplication.shared.canOpenURL(url){
+         show(url: url)
+      } else if let url = URL(string: "http://" + location.mediaURL), UIApplication.shared.canOpenURL(url)  {
+         show(url: url)
       } else {
          let alertVC = UIAlertController(title: "Invalid URL", message: "Please select a valid URL.", preferredStyle: .alert)
          alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
