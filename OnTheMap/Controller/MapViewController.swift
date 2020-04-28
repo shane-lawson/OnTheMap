@@ -16,24 +16,38 @@ class MapViewController: UIViewController, MKMapViewDelegate {
       let appDelegate = UIApplication.shared.delegate as! AppDelegate
       return appDelegate.locations
    }
+   var annotations = [MKPointAnnotation]()
    
    @IBOutlet weak var mapView: MKMapView!
    
    override func viewDidLoad() {
       super.viewDidLoad()
-      // Do any additional setup after loading the view.
+
       setupMapAnnotations()
       mapView.delegate = self
    }
    
-   func setupMapAnnotations() {
-      locations.forEach {
+   override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      NotificationCenter.default.addObserver(self, selector: #selector(setupMapAnnotations), name: NSNotification.Name("locations_updated"), object: nil)
+   }
+   
+   override func viewWillDisappear(_ animated: Bool) {
+      super.viewWillDisappear(animated)
+      NotificationCenter.default.removeObserver(self, name: NSNotification.Name("locations_updated"), object: nil)
+   }
+
+   @objc func setupMapAnnotations() {
+      mapView.removeAnnotations(annotations)
+      annotations.removeAll()
+      annotations = locations.map { (location) -> MKPointAnnotation in
          let annotation = MKPointAnnotation()
-         annotation.title = "\($0.firstName) \($0.lastName)"
-         annotation.subtitle = "\($0.mediaURL)"
-         annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: $0.latitude)!, longitude: CLLocationDegrees(exactly: $0.longitude)!)
-         mapView.addAnnotation(annotation)
+         annotation.title = "\(location.firstName) \(location.lastName)"
+         annotation.subtitle = "\(location.mediaURL)"
+         annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: location.latitude)!, longitude: CLLocationDegrees(exactly: location.longitude)!)
+         return annotation
       }
+      mapView.addAnnotations(annotations)
    }
    
    // MARK: - MKMapViewDelegate

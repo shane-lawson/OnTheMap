@@ -16,6 +16,7 @@ class UdacityAPI {
    enum Endpoints: String {
       case studentLocation = "https://onthemap-api.udacity.com/v1/StudentLocation"
       case session = "https://onthemap-api.udacity.com/v1/session"
+      case studentLocationGET100 = "https://onthemap-api.udacity.com/v1/StudentLocation?limit=100"
       
       var url: URL {
          return URL(string: self.rawValue)!
@@ -23,12 +24,16 @@ class UdacityAPI {
    }
    
    class func getStudentLocations(completionHandler: @escaping ([StudentLocation], Error?) -> Void) {
-      do{
-         let responseObject = try JSONDecoder().decode(StudentLocationGETResponse.self, from: TestData.getStudentLocationsResponse.data(using: .utf8)!)
-         completionHandler(responseObject.results, nil)
-      } catch {
-         completionHandler([], error)
-      }
+      let request = URLRequest(url: Endpoints.studentLocationGET100.url)
+      URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
+         guard let data = data else { completionHandler([], error); return }
+         do{
+            let responseObject = try JSONDecoder().decode(StudentLocationGETResponse.self, from: data)
+            completionHandler(responseObject.results, nil)
+         } catch {
+            completionHandler([], error)
+         }
+      }).resume()
    }
    
    class func login(username: String, password: String, completionHandler: @escaping (Bool,Error?) -> Void) {

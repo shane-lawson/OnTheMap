@@ -17,7 +17,6 @@ class LocationTabBarController: UITabBarController {
    override func viewDidLoad() {
       super.viewDidLoad()
 
-      // Do any additional setup after loading the view.
       refreshAnnotations()
    }
     
@@ -29,6 +28,7 @@ class LocationTabBarController: UITabBarController {
       UdacityAPI.logout { (success, error) in
          guard success else { print(error!); return }
          DispatchQueue.main.async {
+            self.appDelegate.locations.removeAll()
             self.performSegue(withIdentifier: "logoutSuccess", sender: self)
          }
       }
@@ -39,8 +39,12 @@ class LocationTabBarController: UITabBarController {
    }
    
    fileprivate func storeStudentLocations(locations: [StudentLocation], error: Error?) {
-      locations.forEach {
-         appDelegate.locations.append($0)
+      guard error == nil else { print(error!); return }
+      DispatchQueue.main.async { [unowned self] in
+         locations.forEach {
+            self.appDelegate.locations.append($0)
+         }
+         NotificationCenter.default.post(name: NSNotification.Name("locations_updated"), object: nil)
       }
    }
 }
