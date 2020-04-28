@@ -45,7 +45,7 @@ class UdacityAPI {
       }
    }
    
-   class func getStudentLocations(completionHandler: @escaping ([StudentLocation], Error?) -> Void) {
+   class func getStudentLocations(completionHandler: @escaping ([StudentInformation], Error?) -> Void) {
       let request = URLRequest(url: Endpoints.studentLocationGET(100).url)
       URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
          guard let data = data else { completionHandler([], error); return }

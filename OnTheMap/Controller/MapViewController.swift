@@ -12,7 +12,7 @@ import SafariServices
 
 class MapViewController: UIViewController, MKMapViewDelegate {
 
-   var locations: [StudentLocation] {
+   var locations: [StudentInformation] {
       let appDelegate = UIApplication.shared.delegate as! AppDelegate
       return appDelegate.locations
    }

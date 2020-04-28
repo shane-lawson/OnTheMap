@@ -12,7 +12,7 @@ import SafariServices
 
 class PinTableViewController: UITableViewController {
 
-   var locations: [StudentLocation] {
+   var locations: [StudentInformation] {
       let appDelegate = UIApplication.shared.delegate as! AppDelegate
       return appDelegate.locations
    }

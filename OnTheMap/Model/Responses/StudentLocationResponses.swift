@@ -18,5 +18,5 @@ struct StudentLocationPUTResponse: Codable {
 }
 
 struct StudentLocationGETResponse: Codable {
-   let results: [StudentLocation]
+   let results: [StudentInformation]
 }

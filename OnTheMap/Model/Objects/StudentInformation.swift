@@ -1,5 +1,5 @@
 //
-//  StudentLocation.swift
+//  StudentInformation.swift
 //  OnTheMap
 //
 //  Created by Shane Lawson on 4/26/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct StudentLocation: Codable {
+struct StudentInformation: Codable {
    let createdAt: String
    let firstName: String
    let lastName: String

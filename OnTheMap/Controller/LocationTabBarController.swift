@@ -38,7 +38,7 @@ class LocationTabBarController: UITabBarController {
       UdacityAPI.getStudentLocations(completionHandler: storeStudentLocations(locations:error:))
    }
    
-   fileprivate func storeStudentLocations(locations: [StudentLocation], error: Error?) {
+   fileprivate func storeStudentLocations(locations: [StudentInformation], error: Error?) {
       guard error == nil else { print(error!); return }
       DispatchQueue.main.async { [unowned self] in
          self.appDelegate.locations.removeAll()
